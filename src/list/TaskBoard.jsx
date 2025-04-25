@@ -48,7 +48,6 @@ const TaskBoard = () => {
                                     onChange={handleChange}
                                     className="border border-gray-700 text-gray-700 rounded sm:p-2"
                                 >
-                                    <option value="">Filter...</option>
                                     <option value="all">All</option>
                                     <option value="completed">Completed Task</option>
                                     <option value="active">Active Task</option>
