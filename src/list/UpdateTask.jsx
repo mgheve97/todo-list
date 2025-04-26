@@ -6,7 +6,7 @@ const UpdateTask = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
-    const { taskContent, updateTask} = useTask();
+    const { taskContent, updateTask, deleteTask} = useTask();
 
     const [task, setTask] = useState(null);
     const [title, setTitle] = useState("");
@@ -20,6 +20,9 @@ const UpdateTask = () => {
     }, [id, taskContent])
 
     const handleUpdate = () => {
+        if(title.length === 0){
+            deleteTask(task.id)
+        }
         if(task){
             updateTask(task.id, {title});
             navigate("/");

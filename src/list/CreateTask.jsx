@@ -38,17 +38,13 @@ const CreateTask = () => {
         datepost: currentDate,
       };
 
-      postTask(newTask);
-      setTaskContent({ title: "" });
-
-      // if(taskContent.title.length === 0){
-      //   alert("Task name is required! Please Try Again")
-      //   return
-      // }
-      // else{
-      //   postTask(newTask);
-      //   setTaskContent({ title: "" });
-      // }
+      if(taskContent.title.length === 0){
+        return
+      }
+      else{
+        postTask(newTask);
+        setTaskContent({ title: "" });
+      }
     }
 
 
