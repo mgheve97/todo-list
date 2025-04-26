@@ -6,19 +6,20 @@ export const TaskProvider = ({children}) => {
     const [task, setTask] = useState(null);
     const [taskContent, setTaskContent] = useState([]);
 
-    useEffect(()=>{
-        const storedTask = localStorage.getItem("tasks");
-
-        if(storedTask){
-            const parsedTasks = JSON.parse(storedTask);
-            setTaskContent(parsedTasks)
+    useEffect(() => {
+        try {
+            const storedTask = localStorage.getItem("tasks");
+            if (storedTask) {
+                setTaskContent(JSON.parse(storedTask));
+            }
+        } catch (error) {
+            console.error("Error parsing localStorage tasks", error);
+            setTaskContent([]);
         }
-    },[])
+    }, []);
 
     useEffect(()=>{
-        if(taskContent.length > 0){
-            localStorage.setItem("tasks", JSON.stringify(taskContent))
-        }
+        localStorage.setItem("tasks", JSON.stringify(taskContent))
     }, [taskContent])
 
     const formatDate = (date) => {
